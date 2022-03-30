@@ -44,15 +44,15 @@ param(
 
 # Big thanks to Shawn, creating a awsome Reporting Script:
 # http://blog.smasterson.com/2016/02/16/veeam-v9-my-veeam-report-v9-0-1/
-
+# NO LONGER A SNAPIN BUT A MODULE
 #region: Start Load VEEAM Snapin (if not already loaded)
-if (!(Get-PSSnapin -Name VeeamPSSnapIn -ErrorAction SilentlyContinue)) {
-	if (!(Add-PSSnapin -PassThru VeeamPSSnapIn)) {
-		# Error out if loading fails
-		Write-Error "`nERROR: Cannot load the VEEAM Snapin."
-		Exit
-	}
-}
+#if (!(Get-PSSnapin -Name VeeamPSSnapIn -ErrorAction SilentlyContinue)) {
+#	if (!(Add-PSSnapin -PassThru VeeamPSSnapIn)) {
+#		# Error out if loading fails
+#		Write-Error "`nERROR: Cannot load the VEEAM Snapin."
+#		Exit
+#	}
+#
 #endregion
 
 #region: Functions
