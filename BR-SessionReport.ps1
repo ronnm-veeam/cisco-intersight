@@ -170,18 +170,18 @@ $failedSessionsRepl = @($seshListRepl | Where-Object {($_.Result -eq "Failed") -
 #endregion
 
 #region: Create Repository Report
-$RepoReport = $repoList | Get-vPCRepoInfo | Select-Object   @{Name="Repository Name"; Expression = {$_.Target}},
-                                                            @{Name="Host"; Expression = {$_.RepoHost}},
-                                                            @{Name="Path"; Expression = {$_.Storepath}},
-                                                            @{Name="Free (GB)"; Expression = {$_.StorageFree}},
-                                                            @{Name="Total (GB)"; Expression = {$_.StorageTotal}},
-                                                            @{Name="Free (%)"; Expression = {$_.FreePercentage}},
-                                                             @{Name="Status"; Expression = {
-                                                            If ($_.FreePercentage -lt $repoCritical) {"Critical"} 
-                                                            ElseIf ($_.FreePercentage -lt $repoWarn) {"Warning"}
-                                                            ElseIf ($_.FreePercentage -eq "Unknown") {"Unknown"}
-                                                            Else {"OK"}}} | `
-                                                            Sort-Object "Repository Name" 
+#$RepoReport = $repoList | Get-vPCRepoInfo | Select-Object   @{Name="Repository Name"; Expression = {$_.Target}},
+#                                                           @{Name="Host"; Expression = {$_.RepoHost}},
+#                                                           @{Name="Path"; Expression = {$_.Storepath}},
+#                                                            @{Name="Free (GB)"; Expression = {$_.StorageFree}},
+#                                                            @{Name="Total (GB)"; Expression = {$_.StorageTotal}},
+#                                                            @{Name="Free (%)"; Expression = {$_.FreePercentage}},
+#                                                             @{Name="Status"; Expression = {
+#                                                            If ($_.FreePercentage -lt $repoCritical) {"Critical"} 
+#                                                            ElseIf ($_.FreePercentage -lt $repoWarn) {"Warning"}
+#                                                            ElseIf ($_.FreePercentage -eq "Unknown") {"Unknown"}
+#                                                            Else {"OK"}}} | `
+#                                                            Sort-Object "Repository Name" 
 #endregion
 
 #region: Create Session Report
