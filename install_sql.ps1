@@ -1,12 +1,6 @@
-﻿#!powershell
-# <license>
-
-# WANT_JSON
-# POWERSHELL_COMMON
-
 # Veeam Backup & Replication Unattended Install
 #
-# Install SQL 2012/2014 
+# Install SQL 2014 
 #
 # Based on scripts originally written by Timothy Dewin:
 # http://blog.dewin.me/2013/12/1-click-veeam-install-on-windows-2012.html
@@ -19,7 +13,7 @@ param
 [ValidateNotNullorEmpty()][string]$logdir=$(throw "LogDir is mandatory, provide a path for storing installation logs."),
 [ValidateNotNullorEmpty()][string]$basepath=$(throw "BasePath is mandatory, provide a directory containing the install source files."),
 [string]$installdir="C:\Program Files",
-[string]$sqlinstancename="VEEAMSQL",
+[string]$sqlinstancename="VEEAMSQL2016",
 [string]$installdirsqlexpr = $installdir+"\Microsoft SQL Server",
 [string]$installdirsqldata = $installdir+"\Microsoft SQL Server"
 )
