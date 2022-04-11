@@ -30,7 +30,7 @@ if (!(Get-WindowsFeature NET-Framework-Core).Installed) {
 $srvdomuser = $srvdomain+"\"+$srvuser
 $sqlsetup = $basepath+"\Redistr\x64\SQLExpress\2016SP2\SQLEXPR_x64_ENU.exe"
 
-$sqltest = Get-Service | where { $_.ServiceName -eq 'MSSQL $sqlinstancename'  }
+$sqltest = Get-Service | where { $_.ServiceName -eq "\'MSSQL $sqlinstancename\'"}
 if ($sqltest.count -eq 0 ) {
     if (-not (Test-Path $sqlsetup))
     {
@@ -38,7 +38,7 @@ if ($sqltest.count -eq 0 ) {
         exit 1
     }
     $arguments='/q /Action=Install /HideConsole=1  /Features=SQL,Tools /InstanceName=$sqlinstancename /SQLSYSADMINACCOUNTS=$srvdomuser /SQLSVCACCOUNT=$srvdomuser /SQLSVCPASSWORD=$srvpasswd /TCPENABLED=1 /NPENABLED=1 /IAcceptSQLServerLicenseTerms=1 /UpdateEnabled=$false'
-    Write-host 'Installing $sqlsetup'
+    Write-host "Installing $sqlsetup"
     
     $securePassword = ConvertTo-SecureString -String $srvpasswd -AsPlainText -Force
     $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $srvdomuser, $securePassword
