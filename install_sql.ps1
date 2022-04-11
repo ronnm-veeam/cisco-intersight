@@ -49,7 +49,7 @@ if ($sqltest.count -eq 0 ) {
 }
 else
 {
-    write-host "$sqlinstancename is already installed, skipping"
+    write-host '$sqlinstancename is already installed, skipping'
 }
 
 $sqltest = Get-Service | where { $_.ServiceName -eq 'MSSQL $sqlinstancename'  }
