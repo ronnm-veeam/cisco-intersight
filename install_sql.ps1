@@ -28,7 +28,7 @@ if (!(Get-WindowsFeature NET-Framework-Core).Installed) {
 }
 
 $srvdomuser = $srvdomain+"\"+$srvuser
-$sqlsetup = $basepath+"\Redistr\x64\SQLExpress\2016SP2\SQLEXPR_x64_ENU.exe"
+$sqlsetup = $basepath+"Redistr\x64\SQLExpress\2016SP2\SQLEXPR_x64_ENU.exe"
 
 $sqltest = Get-Service | where { $_.ServiceName -eq "\'MSSQL $sqlinstancename\'"}
 if ($sqltest.count -eq 0 ) {
@@ -43,13 +43,13 @@ if ($sqltest.count -eq 0 ) {
     $securePassword = ConvertTo-SecureString -String $srvpasswd -AsPlainText -Force
     $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $srvdomuser, $securePassword
     
-    Write-Host 'Start-Process -file $sqlsetup -arg $arguments -LoadUserProfile -passthru -Credential $cred | wait-process'
+    Write-Host "Start-Process -file $sqlsetup -arg $arguments -LoadUserProfile -passthru -Credential $cred | wait-process"
     
-    Write-host 'Installation completed $sqlsetup'
+    Write-host "Installation completed $sqlsetup"
 }
 else
 {
-    write-host '$sqlinstancename is already installed, skipping'
+    write-host "$sqlinstancename is already installed, skipping"
 }
 
 $sqltest = Get-Service | where { $_.ServiceName -eq 'MSSQL $sqlinstancename'  }
