@@ -28,7 +28,7 @@ if (!(Get-WindowsFeature NET-Framework-Core).Installed) {
 }
 
 $srvdomuser = $srvdomain+"\"+$srvuser
-$sqlsetup = $basepath+"\Redistr\x64\SQLEXPR_x64_ENU.exe"
+$sqlsetup = $basepath+"\Redistr\x64\SQLExpress\2016SP2\SQLEXPR_x64_ENU.exe""
 
 $sqltest = Get-Service | where { $_.ServiceName -eq "MSSQL`$$sqlinstancename"  }
 if ($sqltest.count -eq 0 ) {
