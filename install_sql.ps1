@@ -55,6 +55,6 @@ else
 $sqltest = Get-Service | where { $_.ServiceName -eq 'MSSQL $sqlinstancename'  }
 if ($sqltest.count -gt 0 -and $sqltest[0].Status -ne 'running' )
 {
-    write-host 'Couldn't find installed $sqlinstancename so might install might have failed'
+    write-host "Couldn't find installed $sqlinstancename so might install might have failed"
     write-host 'Check Program Files\Microsoft SQL Server\100\Setup Bootstrap\Log for error'
 }
