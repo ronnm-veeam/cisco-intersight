@@ -43,7 +43,7 @@ if ($sqltest.count -eq 0 ) {
     $securePassword = ConvertTo-SecureString -String $srvpasswd -AsPlainText -Force
     $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $srvdomuser, $securePassword
     
-    Start-Process -file $sqlsetup -arg $arguments -LoadUserProfile -passthru -Credential $cred | wait-process
+    Write-Host 'Start-Process -file $sqlsetup -arg $arguments -LoadUserProfile -passthru -Credential $cred | wait-process'
     
     Write-host 'Installation completed $sqlsetup'
 }
