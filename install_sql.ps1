@@ -43,19 +43,19 @@ if ($sqltest.count -eq 0 ) {
     $securePassword = ConvertTo-SecureString -String $srvpasswd -AsPlainText -Force
     $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $srvdomuser, $securePassword
     
-    Write-Host "Start-Process -file $sqlsetup -arg $arguments -LoadUserProfile -passthru -Credential $cred | wait-process" *> $logdir"\install_sql.log"
-    Start-Process -file $sqlsetup -arg $arguments -LoadUserProfile -passthru -Credential $cred | wait-process
+    Write-Host "Start-Process -file $sqlsetup -arg $arguments -LoadUserProfile -passthru -Credential $cred | wait-process" *>> $logdir"\install_sql.log"
+    Start-Process -file $sqlsetup -arg $arguments -LoadUserProfile -passthru -Credential $cred | wait-process *>> $logdir"\install_sql.log"
     
-    Write-host "Installation completed $sqlsetup"
+    Write-host "Installation completed $sqlsetup" *>> $logdir"\install_sql.log"
 }
 else
 {
-    write-host "$sqlinstancename is already installed, skipping"
+    write-host "$sqlinstancename is already installed, skipping" *>> $logdir"\install_sql.log"
 }
 
 $sqltest = Get-Service | where { $_.ServiceName -eq 'MSSQL $sqlinstancename'  }
 if ($sqltest.count -gt 0 -and $sqltest[0].Status -ne 'running' )
 {
-    write-host "Couldn't find installed $sqlinstancename so might install might have failed"
-    write-host 'Check Program Files\Microsoft SQL Server\100\Setup Bootstrap\Log for error'
+    write-host "Couldn't find installed $sqlinstancename so might install might have failed" *>> $logdir"\install_sql.log"
+    write-host 'Check Program Files\Microsoft SQL Server\100\Setup Bootstrap\Log for error' *>> $logdir"\install_sql.log"
 }
