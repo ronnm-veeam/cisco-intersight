@@ -44,7 +44,7 @@ if ($sqltest.count -eq 0 ) {
     $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $srvdomuser, $securePassword
     
     Write-Host "Start-Process -file $sqlsetup -arg $arguments -LoadUserProfile -passthru -Credential $cred | wait-process" *>> $logdir"\install_sql.log"
-    Start-Process -file $sqlsetup -arg $arguments -LoadUserProfile -passthru -Credential $cred | wait-process *>> $logdir"\install_sql.log"
+    Start-Process -FilePath $sqlsetup -arg $arguments -LoadUserProfile -passthru -Credential $cred | wait-process *>> $logdir"\install_sql.log"
     
     Write-host "Installation completed $sqlsetup" *>> $logdir"\install_sql.log"
 }
