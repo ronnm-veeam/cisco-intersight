@@ -37,7 +37,9 @@ if ($sqltest.count -eq 0 ) {
         Write-host 'Veeam SQL Express installer not found!'
         exit 1
     }
-    $arguments="/q /Action=Install /HideConsole=1  /Features=SQL,Tools /InstanceName=$sqlinstancename /SQLSYSADMINACCOUNTS=$srvdomuser /SQLSVCACCOUNT=$srvdomuser /SQLSVCPASSWORD=$srvpasswd /TCPENABLED=1 /NPENABLED=1 /IAcceptSQLServerLicenseTerms=1 /UpdateEnabled=$false"
+    #$arguments="/q /Action=Install /HideConsole=1  /Features=SQL,Tools /InstanceName=$sqlinstancename /SQLSYSADMINACCOUNTS=$srvdomuser /SQLSVCACCOUNT=$srvdomuser /SQLSVCPASSWORD=$srvpasswd /TCPENABLED=1 /NPENABLED=1 /IAcceptSQLServerLicenseTerms=1 /UpdateEnabled=$false"
+    $arguments="/Q /IACCEPTSQLSERVERLICENSETERMS /Action=\"install\" /Features=SQL,Tools /InstanceName=$sqlinstancename /SQLSYSADMINACCOUNTS=$srvdomuser /SQLSVCACCOUNT=$srvdomuser /SQLSVCPASSWORD=$srvpasswd"
+
     Write-host "Installing $sqlsetup" *> $logdir"\install_sql.log"
     
     $securePassword = ConvertTo-SecureString -String $srvpasswd -AsPlainText -Force
