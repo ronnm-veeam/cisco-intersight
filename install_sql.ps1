@@ -45,13 +45,13 @@ if ($sqltest.count -eq 0 ) {
     $securePassword = ConvertTo-SecureString -String $srvpasswd -AsPlainText -Force
     $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $srvdomuser, $securePassword
     
-    Write-Host "Start-Process $sqlsetup -Args "/Q" -WorkingDirectory $logdir"
-    Start-Process $sqlsetup -Args "/Q" -WorkingDirectory $logdir
-    $sqlInstaller = "$logdir\SQLEXPR_ENU\setup.exe"
-    Write-Host "Start-Process -FilePath $sqlInstaller -Args $arguments -LoadUserProfile -NoNewWindow-WorkingDirectory $logdir -Wait" *>> $logdir"\install_sql.log"
-    Start-Process -FilePath $sqlInstaller -Args $arguments -LoadUserProfile -NoNewWindow -WorkingDirectory $logdir -Wait *>> $logdir"\install_sql.log"
-    #Write-Host "Start-Process $sqlsetup -arg $arguments -LoadUserProfile -NoNewWindow-WorkingDirectory $logdir -Wait" *>> $logdir"\install_sql.log"
-    #Start-Process $sqlsetup -arg $arguments -LoadUserProfile -NoNewWindow -WorkingDirectory $logdir -Wait *>> $logdir"\install_sql.log"
+    ##Write-Host "Start-Process $sqlsetup -Args "/Q" -WorkingDirectory $logdir"
+    ##Start-Process $sqlsetup -Args "/Q" -WorkingDirectory $logdir
+    ##$sqlInstaller = "$logdir\SQLEXPR_ENU\setup.exe"
+    ##Write-Host "Start-Process -FilePath $sqlInstaller -Args $arguments -LoadUserProfile -NoNewWindow-WorkingDirectory $logdir -Wait" *>> $logdir"\install_sql.log"
+    ##Start-Process -FilePath $sqlInstaller -Args $arguments -LoadUserProfile -NoNewWindow -WorkingDirectory $logdir -Wait *>> $logdir"\install_sql.log"
+    Write-Host "Start-Process $sqlsetup -arg $arguments -LoadUserProfile -NoNewWindow-WorkingDirectory $logdir -Wait" *>> $logdir"\install_sql.log"
+    Start-Process $sqlsetup -arg $arguments -LoadUserProfile -NoNewWindow -WorkingDirectory $logdir -Wait *>> $logdir"\install_sql.log"
     #Write-Host "Start-Process -FilePath $sqlsetup -arg $arguments -LoadUserProfile -passthru -Credential $cred | wait-process" *>> $logdir"\install_sql.log"
     #Start-Process -FilePath $sqlsetup -arg $arguments -LoadUserProfile -passthru -Credential $cred | wait-process *>> $logdir"\install_sql.log"
     
