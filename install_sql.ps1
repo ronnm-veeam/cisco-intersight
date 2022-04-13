@@ -49,7 +49,7 @@ if ($sqltest.count -eq 0 ) {
     Start-Process $sqlsetup -Args "/Q" -WorkingDirectory $logdir
     $sqlInstaller = "$logdir\SQLEXPR_x64_ENU\setup.exe"
     Write-Host "Start-Process $sqlInstaller -arg $arguments -LoadUserProfile -NoNewWindow-WorkingDirectory $logdir -Wait" *>> $logdir"\install_sql.log"
-    Start-Process $sqlInstaller -arg $arguments -LoadUserProfile -NoNewWindow -WorkingDirectory $logdir -Wait *>> $logdir"\install_sql.log"
+    Start-Process '$sqlInstaller' -arg $arguments -LoadUserProfile -NoNewWindow -WorkingDirectory $logdir -Wait *>> $logdir"\install_sql.log"
     #Write-Host "Start-Process $sqlsetup -arg $arguments -LoadUserProfile -NoNewWindow-WorkingDirectory $logdir -Wait" *>> $logdir"\install_sql.log"
     #Start-Process $sqlsetup -arg $arguments -LoadUserProfile -NoNewWindow -WorkingDirectory $logdir -Wait *>> $logdir"\install_sql.log"
     #Write-Host "Start-Process -FilePath $sqlsetup -arg $arguments -LoadUserProfile -passthru -Credential $cred | wait-process" *>> $logdir"\install_sql.log"
