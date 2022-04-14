@@ -47,9 +47,9 @@ if ($sqltest.count -eq 0 ) {
     
     ##Write-Host "Start-Process $sqlsetup -Args "/Q" -WorkingDirectory $logdir"
     ##Start-Process $sqlsetup -Args "/Q" -WorkingDirectory $logdir
-    Write-Host "Start-Process $sqlsetup -ArgumentList /x:$TempDir /q /u -Wait" 
+    Write-Host "Start-Process $sqlsetup -ArgumentList /x:$logdir /q /u -Wait" 
 
-    Start-Process "$sqlsetup" -ArgumentList "/x:$TempDir /q /u" -Wait
+    Start-Process "$sqlsetup" -ArgumentList "/x:$logdir /q /u" -Wait
 
    
 
