@@ -57,7 +57,7 @@ Param
     [string]$InstallOption
 
 )
-
+Set-Item -Path WSMAN:\localhost\Config\MaxTimeoutms 1800000
 #Script Path and additional PS1 files
 $ScriptPath = (Split-Path ((Get-Variable MyInvocation).Value).MyCommand.Path)
 $VeeamConfigVars = "$ScriptPath\VeeamConfigVariables.ps1"
